@@ -54,14 +54,13 @@ class GPT_3:
 
         self.completion = openai.Completion
         self.options = {
-            'engine': 'text-davinci-002',
+            'engine': 'gpt-3.5-turbo-instruct',
             'temperature': 0.25,
             'top_p': 1,
             'frequency_penalty': 0,
             'presence_penalty': 0,
             'max_tokens': 512
         }
-
     def __call__(self, prompt, options=None):
         return self.prediction(prompt, options)
 
@@ -72,7 +71,7 @@ class GPT_3:
         return self.completion.create(prompt=prompt, **options)['choices'][0]['text']
 
     def summarize(self, text):
-        prompt = f'Try to summarize the following text as best you can!\n\n{text}'
+        prompt = f'I want you to give me a detailed information on what is going on about their health with this laboratory test result within 3 sentences!\n\n{text}'
 
         return self.prediction(prompt=prompt)
 
