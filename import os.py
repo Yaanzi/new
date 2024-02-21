@@ -50,7 +50,6 @@ class Reader:
 
 class GPT_3:
     def __init__(self, api_key):
-        openai.api_key = api_key
 
         self.completion = openai.Completion
         self.options = {
